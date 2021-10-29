@@ -22,7 +22,11 @@ const getGif = function (search) {
     { mode: "cors" }
   )
     .then((res) => res.json())
-    .then((data) => (image.src = data.data.images.original.url));
+    .then((data) => (image.src = data.data.images.original.url))
+    .catch((err) => {
+      console.error(err);
+      getGif("404");
+    });
 };
 
 const clearForm = function () {
